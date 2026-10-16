@@ -1,184 +1,144 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
+.container {
+  background: var(--code-bg);
+  padding: 2.5em;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.container h1 {
+  margin-top: 0;
+  font-size: 2.2rem;
   color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+.container h2 {
+  color: var(--text-h);
+  margin-bottom: 20px;
 }
 
-#center {
+/* Űrlap elemek (Input, Select) */
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  background: var(--bg);
+  color: var(--text-h);
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+/* Egyedi legördülő nyíl a select-nek */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2em;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--accent);
+}
+
+/* Általános Gombok */
+button {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 12px; /* <-- Ez választja szét a gombokat */
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: var(--accent);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
+  font-family: inherit;
+}
+
+button:hover {
+  background-color: #8b22e2;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Válasz gombok stílusai */
+.answers {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  gap: 12px;
+  margin-top: 20px;
 }
 
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
+.answers button {
+  background-color: var(--bg);
+  color: var(--text-h);
+  border: 2px solid var(--border);
+  padding: 12px;
   text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+  margin-bottom: 0; /* <-- Itt nincs szükség extra margóra a gap miatt */
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+.answers button:hover:not(:disabled) {
+  background-color: var(--social-bg);
+  border-color: var(--accent-border);
+  color: var(--accent);
 }
 
-#next-steps ul {
+/* Progress Bar */
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--accent);
+  border-radius: 4px;
+}
+
+/* Toplista */
+ul {
   list-style: none;
   padding: 0;
+  margin-top: 20px;
+  text-align: left;
+}
+
+li {
+  background: var(--bg);
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
   display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+  justify-content: space-between;
+  font-family: var(--mono);
 }
